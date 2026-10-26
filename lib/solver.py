@@ -656,7 +656,7 @@ class TransportEquationSolver():
                         handler = self._interior_grid_calculations
                     handler(flag, idx, cnt, i, j, AA, BB, CC, DD, modified_matrix)
                     # breakpoint()
-            # breakpoint()
+            breakpoint()
             if cnt == 0:
                 AAA[:self.n, : 2 * self.m] = np.hstack([BB, CC])
             elif cnt == self.n - 1:
@@ -693,6 +693,7 @@ class TransportEquationSolver():
         #saving water saturation matrix and then modifying the current water saturation matrix for calcs
         water_saturation_old = np.copy(self.water_saturation)
         water_saturation_modified = self._matrix_reordering(np.copy(self.water_saturation), xmod, ymod)
+        breakpoint() #need to check the modified matrix first
         
         #computing the mobilities
         self._compute_lambda_a(RelativePermeabilityFormula.CoreyTypeEquation, water_saturation_modified)
